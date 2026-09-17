@@ -1,0 +1,1 @@
+DROP TABLE IF EXISTS main.festival_sevas CASCADE;

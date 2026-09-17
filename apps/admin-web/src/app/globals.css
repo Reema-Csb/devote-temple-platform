@@ -1,0 +1,336 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-heading);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+
+  --color-surface: var(--surface);
+  --color-brand: var(--brand);
+  --color-brand-dark: var(--brand-dark);
+  --color-brand-gold: var(--brand-gold);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --brand: #c8602a;
+  --brand-dark: #8b3a15;
+  --brand-gold: #d4960a;
+
+  --background: #f7f0e6;
+  --surface: #f0e8d8;
+
+  --foreground: #2d1f0e;
+  --muted-foreground: #8b7355;
+
+  --card: #ffffff;
+  --card-foreground: #2d1f0e;
+
+  --popover: #ffffff;
+  --popover-foreground: #2d1f0e;
+
+  --primary: #c8602a;
+  --primary-foreground: #ffffff;
+
+  --secondary: #f0e8d8;
+  --secondary-foreground: #2d1f0e;
+
+  --muted: #f0e8d8;
+
+  --accent: #d4960a;
+  --accent-foreground: #ffffff;
+
+  --destructive: #ef4444;
+
+  --border: #e5d5b5;
+  --input: #f0e8d8;
+  --ring: #c8602a;
+
+  --success: #22c55e;
+  --warning: #f59e0b;
+
+  --radius: 1rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply font-sans;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  input,
+  textarea,
+  select,
+  button {
+    color: var(--foreground);
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--muted-foreground);
+    opacity: 1;
+  }
+}
+
+/* Date picker wrapper */
+.festival-date-picker {
+  position: relative;
+  width: 100%;
+  margin-top: 8px;
+}
+
+/* Start Date and End Date box */
+.festival-date-trigger {
+  display: flex;
+  width: 100%;
+  height: 56px;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--card);
+
+  padding: 0 16px;
+
+  color: var(--card-foreground);
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+
+  cursor: pointer;
+  appearance: none;
+  outline: none;
+
+  box-shadow: 0 1px 3px rgb(0 0 0 / 8%);
+
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease,
+    background-color 150ms ease;
+}
+
+.festival-date-trigger:hover:not(:disabled) {
+  border-color: var(--primary);
+}
+
+.festival-date-trigger:focus-visible {
+  border-color: var(--ring);
+  box-shadow: 0 0 0 4px rgb(200 96 42 / 12%);
+}
+
+.festival-date-trigger:disabled {
+  cursor: not-allowed;
+  background: var(--muted);
+  color: var(--muted-foreground);
+  opacity: 1;
+}
+
+/* Calendar icon */
+.festival-date-icon {
+  width: 19px;
+  height: 19px;
+  flex-shrink: 0;
+  color: var(--primary);
+}
+
+/* Calendar popup */
+.festival-calendar-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 50;
+
+  width: 100%;
+  min-width: 320px;
+  padding: 16px;
+
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--popover);
+  color: var(--popover-foreground);
+
+  box-shadow: 0 18px 45px rgb(45 31 14 / 18%);
+}
+
+/* Calendar header */
+.festival-calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+/* Previous and next buttons */
+.festival-calendar-nav {
+  display: flex;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--card);
+  color: var(--foreground);
+
+  cursor: pointer;
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease;
+}
+
+.festival-calendar-nav:hover {
+  border-color: var(--primary);
+  background: var(--muted);
+}
+
+/* Month and year dropdowns */
+.festival-calendar-selects {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.festival-calendar-selects select {
+  height: 36px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--card);
+  padding: 0 10px;
+
+  color: var(--foreground);
+  font-size: 13px;
+  font-weight: 600;
+
+  outline: none;
+  cursor: pointer;
+}
+
+.festival-calendar-selects select:focus {
+  border-color: var(--ring);
+}
+
+/* Week names */
+.festival-calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+  margin-bottom: 6px;
+}
+
+.festival-calendar-weekdays span {
+  display: flex;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--muted-foreground);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Calendar date grid */
+.festival-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+}
+
+/* Individual date */
+.festival-calendar-day {
+  display: flex;
+  width: 100%;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: transparent;
+
+  color: var(--foreground);
+  font-size: 13px;
+  font-weight: 500;
+
+  cursor: pointer;
+  transition:
+    background-color 150ms ease,
+    color 150ms ease,
+    border-color 150ms ease;
+}
+
+.festival-calendar-day:hover:not(:disabled) {
+  background: var(--muted);
+}
+
+.festival-calendar-day-outside {
+  color: var(--muted-foreground);
+  opacity: 0.55;
+}
+
+.festival-calendar-day-today {
+  border-color: var(--primary);
+}
+
+.festival-calendar-day-selected {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.festival-calendar-day-selected:hover:not(:disabled) {
+  background: var(--primary);
+}
+
+.festival-calendar-day:disabled {
+  cursor: not-allowed;
+  color: var(--muted-foreground);
+  opacity: 0.35;
+}

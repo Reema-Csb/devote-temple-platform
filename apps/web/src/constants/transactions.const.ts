@@ -1,0 +1,48 @@
+import { Transaction } from '@/types/transaction.type';
+
+export const MOCK_TRANSACTIONS: Transaction[] = [
+  {
+    id: '1',
+    templeName: 'Sree Padmanabhaswamy',
+    sevaName: 'Annadhanam',
+    templeIcon: '🛕',
+    transactionId: 'TXN2024031500123',
+    date: 'Mar 15, 2024',
+    time: '10:30 AM',
+    amount: 3001,
+    status: 'Completed',
+  },
+  {
+    id: '2',
+    templeName: 'Kashi Vishwanath',
+    sevaName: 'Archana',
+    templeIcon: '✨',
+    transactionId: 'TXN2024030800456',
+    date: 'Mar 08, 2024',
+    time: '08:15 AM',
+    amount: 1101,
+    status: 'Completed',
+  },
+  {
+    id: '3',
+    templeName: 'Tirupati Balaji',
+    sevaName: 'Deepa Seva',
+    templeIcon: '🔥',
+    transactionId: 'TXN2024030200789',
+    date: 'Mar 02, 2024',
+    time: '06:45 PM',
+    amount: 501,
+    status: 'Pending',
+  },
+  {
+    id: '4',
+    templeName: 'Meenakshi Amman',
+    sevaName: 'Maintenance',
+    templeIcon: '🏛️',
+    transactionId: 'TXN2024022400111',
+    date: 'Feb 24, 2024',
+    time: '11:20 AM',
+    amount: 2501,
+    status: 'Completed',
+  },
+];

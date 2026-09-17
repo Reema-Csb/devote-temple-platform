@@ -1,0 +1,45 @@
+{
+  "name": "devote",
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "check-types": "turbo run check-types",
+    "dev:web": "turbo run dev --filter=@devote/web",
+    "dev:gateway": "turbo run start --filter=@devote/api-gateway",
+    "dev:payment": "turbo run start --filter=@devote/payment-service",
+    "dev:temple": "turbo run start --filter=@devote/temple-service",
+    "dev:services": "turbo run start --filter=@devote/api-gateway --filter=@devote/payment-service --filter=@devote/temple-service",
+    "dev:backend": "turbo run start --filter=@devote/api-gateway --filter=@devote/payment-service --filter=@devote/temple-service",
+    "build:web": "turbo run build --filter=@devote/web",
+    "build:services": "turbo run build --filter=@devote/api-gateway --filter=@devote/payment-service --filter=@devote/temple-service",
+    "start": "turbo run start",
+    "start:web": "turbo run start --filter=@devote/web",
+    "start:gateway": "turbo run start --filter=@devote/api-gateway",
+    "start:payment": "turbo run start --filter=@devote/payment-service",
+    "start:temple": "turbo run start --filter=@devote/temple-service",
+    "clean": "turbo run clean && rm -rf node_modules"
+  },
+  "devDependencies": {
+    "prettier": "^3.7.4",
+    "turbo": "^2.9.3",
+    "typescript": "5.9.2"
+  },
+  "packageManager": "pnpm@9.0.0",
+  "engines": {
+    "node": ">=18"
+  },
+  "pnpm": {
+    "overrides": {
+      "uuid": "^9.0.1"
+    }
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.1049.0",
+    "@loopback/build": "^12.0.11",
+    "dotenv": "^17.4.2",
+    "multer": "^2.1.1"
+  }
+}

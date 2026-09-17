@@ -1,0 +1,44 @@
+import {
+  Constructor,
+  inject,
+  MetadataInspector,
+  Provider,
+} from '@loopback/context';
+import {CoreBindings, injectable, BindingScope} from '@loopback/core';
+import {FileUtilBindings, IFileRequestMetadata} from '@sourceloop/file-utils';
+
+@injectable({scope: BindingScope.TRANSIENT})
+export class FileMetadataProvider
+  implements Provider<IFileRequestMetadata | undefined>
+{
+  constructor(
+    @inject(CoreBindings.CONTROLLER_CLASS, {optional: true})
+    private readonly controllerClass: Constructor<{}>,
+    @inject(CoreBindings.CONTROLLER_METHOD_NAME, {optional: true})
+    private readonly methodName: string,
+  ) {}
+
+  value(): IFileRequestMetadata | undefined {
+    if (!this.controllerClass || !this.methodName) return;
+    const metadata = getFileMetadata(
+      this.controllerClass,
+      this.methodName,
+    )?.filter(meta => meta);
+
+    if (metadata && metadata.length > 1) {
+      throw Error('Multiple file decorators not supported');
+    }
+    return metadata?.[0];
+  }
+}
+
+export function getFileMetadata(
+  controllerClass: Constructor<{}>,
+  methodName: string,
+): IFileRequestMetadata[] | undefined {
+  return MetadataInspector.getMethodMetadata<IFileRequestMetadata[]>(
+    FileUtilBindings.FILE_REQUEST_METADATA,
+    controllerClass.prototype,
+    methodName,
+  );
+}

@@ -1,0 +1,1 @@
+DROP TABLE IF EXISTS main.notification_preferences;

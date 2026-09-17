@@ -1,0 +1,2 @@
+ALTER TABLE main.users
+ADD COLUMN IF NOT EXISTS user_image TEXT;

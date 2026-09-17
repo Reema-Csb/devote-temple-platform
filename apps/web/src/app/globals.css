@@ -1,0 +1,403 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-heading);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-surface: var(--surface);
+  --color-brand: var(--brand);
+  --color-brand-dark: var(--brand-dark);
+  --color-brand-gold: var(--brand-gold);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  /* ── Devote Brand ──────────────────────────────────────────── */
+  --brand: #c8602a; /* Burnt orange — primary brand colour  */
+  --brand-dark: #8b3a15; /* Deep orange  — gradient end          */
+  --brand-gold: #d4960a; /* Amber gold   — secondary accent      */
+
+  /* ── Backgrounds ───────────────────────────────────────────── */
+  --background: #f7f0e6; /* Warm cream   — page background       */
+  --surface: #f0e8d8; /* Soft cream   — card & input fill     */
+
+  /* ── Text ──────────────────────────────────────────────────── */
+  --foreground: #2d1f0e; /* Deep brown   — primary text          */
+  --muted-foreground: #8b7355; /* Medium brown — secondary / labels  */
+
+  /* ── Component tokens ──────────────────────────────────────── */
+  --card: #ffffff;
+  --card-foreground: #2d1f0e;
+  --popover: #ffffff;
+  --popover-foreground: #2d1f0e;
+  --primary: #c8602a;
+  --primary-foreground: #ffffff;
+  --secondary: #f0e8d8;
+  --secondary-foreground: #2d1f0e;
+  --muted: #f0e8d8;
+  --accent: #d4960a;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --border: #e5d5b5;
+  --input: #f0e8d8; /* Input background fill                */
+  --ring: #c8602a; /* Focus ring                           */
+
+  /* ── Status colours ────────────────────────────────────────── */
+  --success: #22c55e;
+  --warning: #f59e0b;
+
+  /* ── Chart palette ─────────────────────────────────────────── */
+  --chart-1: #c8602a;
+  --chart-2: #d4960a;
+  --chart-3: #8b3a15;
+  --chart-4: #8b7355;
+  --chart-5: #e5d5b5;
+
+  /* ── Border radius ─────────────────────────────────────────── */
+  /* Base = 16 px; radius-sm…4xl scale from this single value.   */
+  --radius: 1rem;
+
+  /* ── Typography — values injected by next/font in layout.tsx ── */
+
+  /* ── Sidebar ───────────────────────────────────────────────── */
+  --sidebar: #ffffff;
+  --sidebar-foreground: #2d1f0e;
+  --sidebar-primary: #c8602a;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f0e8d8;
+  --sidebar-accent-foreground: #2d1f0e;
+  --sidebar-border: #e5d5b5;
+  --sidebar-ring: #c8602a;
+}
+
+.dark {
+  --background: #1a1208;
+  --foreground: #f7f0e6;
+  --card: #2d1f0e;
+  --card-foreground: #f7f0e6;
+  --popover: #2d1f0e;
+  --popover-foreground: #f7f0e6;
+  --primary: #d4960a;
+  --primary-foreground: #2d1f0e;
+  --secondary: #3d2a15;
+  --secondary-foreground: #f7f0e6;
+  --muted: #3d2a15;
+  --muted-foreground: #c8b99a;
+  --accent: #c8602a;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --border: #3d2a15;
+  --input: #3d2a15;
+  --ring: #d4960a;
+  --sidebar: #2d1f0e;
+  --sidebar-foreground: #f7f0e6;
+  --sidebar-primary: #d4960a;
+  --sidebar-primary-foreground: #2d1f0e;
+  --sidebar-accent: #3d2a15;
+  --sidebar-accent-foreground: #f7f0e6;
+  --sidebar-border: #3d2a15;
+  --sidebar-ring: #d4960a;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+/* Calendar */
+
+.festival-date-picker {
+  position: relative;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.festival-date-trigger {
+  display: flex;
+  width: 100%;
+  height: 56px;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--card);
+
+  padding: 0 16px;
+
+  color: var(--card-foreground);
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+
+  cursor: pointer;
+  appearance: none;
+  outline: none;
+
+  box-shadow: 0 1px 3px rgb(0 0 0 / 8%);
+
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease,
+    background-color 150ms ease;
+}
+
+.festival-date-trigger:hover:not(:disabled) {
+  border-color: var(--primary);
+}
+
+.festival-date-trigger:focus-visible {
+  border-color: var(--ring);
+  box-shadow: 0 0 0 4px rgb(200 96 42 / 12%);
+}
+
+.festival-date-trigger:disabled {
+  cursor: not-allowed;
+  background: var(--muted);
+  color: var(--muted-foreground);
+  opacity: 1;
+}
+
+.festival-date-icon {
+  width: 19px;
+  height: 19px;
+  flex-shrink: 0;
+  color: var(--primary);
+}
+
+.festival-calendar-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 9999;
+
+  width: 320px;
+  padding: 16px;
+
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--popover);
+  color: var(--popover-foreground);
+
+  box-shadow: 0 18px 45px rgb(45 31 14 / 18%);
+}
+
+.festival-calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.festival-calendar-nav {
+  display: flex;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--card);
+  color: var(--foreground);
+
+  cursor: pointer;
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease;
+}
+
+.festival-calendar-nav:hover {
+  border-color: var(--primary);
+  background: var(--muted);
+}
+
+.festival-calendar-selects {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.festival-calendar-selects select {
+  height: 36px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--card);
+  padding: 0 10px;
+
+  color: var(--foreground);
+  font-size: 13px;
+  font-weight: 600;
+
+  outline: none;
+  cursor: pointer;
+}
+
+.festival-calendar-selects select:focus {
+  border-color: var(--ring);
+}
+
+.festival-calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+  margin-bottom: 6px;
+}
+
+.festival-calendar-weekdays span {
+  display: flex;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--muted-foreground);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.festival-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+}
+
+.festival-calendar-day {
+  display: flex;
+  width: 100%;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+
+  color: var(--foreground);
+  font-size: 13px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition:
+    background-color 150ms ease,
+    color 150ms ease,
+    border-color 150ms ease;
+}
+
+.festival-calendar-day:hover:not(:disabled) {
+  background: var(--muted);
+}
+
+.festival-calendar-day-outside {
+  color: var(--muted-foreground);
+  opacity: 0.5;
+}
+
+.festival-calendar-day-today {
+  border-color: var(--primary);
+}
+
+.festival-calendar-day-selected {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.festival-calendar-day-selected:hover:not(:disabled) {
+  background: var(--primary);
+}
+
+.festival-calendar-day:disabled {
+  cursor: not-allowed;
+  color: var(--muted-foreground);
+  opacity: 0.35;
+}
+
+/* Donation page calendar */
+
+.donation-date-picker .festival-date-picker {
+  margin-top: 0;
+}
+
+.donation-date-picker .festival-date-trigger {
+  height: 52px;
+  border-radius: 8px;
+  border-width: 1.5px;
+  border-color: #d4c4a8;
+  background: #faf7f2;
+  box-shadow: none;
+}
+
+.donation-date-picker .festival-date-trigger:hover:not(:disabled) {
+  border-color: #c8773a;
+}
+
+.donation-date-picker .festival-calendar-panel {
+  width: 320px;
+}
+
+.festival-calendar-inline {
+  position: relative;
+  top: 12px;
+  left: 0;
+
+  width: 320px;
+
+  margin-bottom: 12px;
+
+  z-index: 1;
+}

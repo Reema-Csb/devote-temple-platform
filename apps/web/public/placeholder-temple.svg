@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <rect width="800" height="500" fill="#f3ece3"/>
+  <g fill="none" stroke="#c9a876" stroke-width="3">
+    <path d="M400 60 L470 130 H330 Z"/>
+    <rect x="350" y="130" width="100" height="30"/>
+    <rect x="250" y="200" width="300" height="220"/>
+    <line x1="250" y1="250" x2="550" y2="250"/>
+    <rect x="380" y="320" width="40" height="100"/>
+  </g>
+  <text x="400" y="460" font-family="Segoe UI, sans-serif" font-size="20" fill="#9c6b3a" text-anchor="middle">
+    Temple image not available
+  </text>
+</svg>
