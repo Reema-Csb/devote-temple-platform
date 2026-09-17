@@ -2,7 +2,7 @@ importScripts("https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js
 importScripts("https://www.gstatic.com/firebasejs/10.13.2/firebase-messaging-compat.js");
 
 firebase.initializeApp({
-  apiKey: "AIzaSyAZ9dS6VW47GM9K6IM07PMCdxkCuhmU1HI",
+  apiKey: "your_firebase_api_key_here",
   authDomain: "devote-ba294.firebaseapp.com",
   projectId: "devote-ba294",
   storageBucket: "devote-ba294.firebasestorage.app",
